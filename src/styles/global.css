@@ -1,0 +1,18 @@
+@import "tailwindcss";
+.social-pill{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px;
+  border-radius:9999px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  transition:all .25s ease;
+}
+
+.social-pill:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 0 20px rgba(99,102,241,.25),
+    0 0 40px rgba(56,189,248,.10);
+}

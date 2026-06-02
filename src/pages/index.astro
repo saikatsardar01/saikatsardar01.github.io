@@ -1,0 +1,1120 @@
+---
+import "../styles/global.css";
+---
+
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>
+			Saikat Kumar Sardar | Student,Software Engineer & Researcher
+		</title>
+		<meta
+			name="description"
+			content="Portfolio of Saikat Kumar Sardar, B.Tech CSE at MSIT Kolkata. Specialized in Python, low-latency architecture, and optimization."
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			:root {
+				--bg: #0b1220;
+				--muted: #94a3b8;
+				--accent-from: #38bdf8;
+				--accent-to: #818cf8;
+			}
+			body {
+				font-family: "Inter", sans-serif;
+				background: var(--bg);
+				color: #f8fafc;
+			}
+			.glass-card {
+				background: linear-gradient(
+					135deg,
+					rgba(255, 255, 255, 0.02),
+					rgba(255, 255, 255, 0.01)
+				);
+				backdrop-filter: blur(8px);
+				border: 1px solid rgba(255, 255, 255, 0.06);
+				box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+			}
+			.gradient-text {
+				background: linear-gradient(
+					to right,
+					var(--accent-from),
+					var(--accent-to)
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			.nav-link {
+				color: var(--muted);
+				transition:
+					color 0.18s ease,
+					transform 0.18s ease;
+			}
+			.nav-link:hover {
+				color: #fff;
+				transform: translateY(-1px);
+			}
+			.hero-cta {
+				box-shadow: 0 8px 30px rgba(99, 102, 241, 0.12);
+			}
+			.rounded-portrait {
+				border-radius: 14px;
+				border: 1px solid rgba(255, 255, 255, 0.04);
+			}
+			@media (max-width: 768px) {
+				header {
+					padding-top: 6rem;
+					padding-bottom: 3rem;
+				}
+			}
+		</style>
+	</head>
+	<script>
+		async function loadCodeforces() {
+			try {
+				const response = await fetch(
+					"https://codeforces.com/api/user.info?handles=saikatsardar180",
+				);
+
+				const data = await response.json();
+
+				if (!data.result?.length) return;
+
+				const user = data.result[0];
+
+				const handle = document.getElementById("cf-handle");
+				if (!handle) return;
+
+				handle.textContent = `${user.handle}`;
+
+				const rank = user.rank || "";
+
+				const colors: Record<string, string> = {
+					newbie: "#808080",
+					pupil: "#008000",
+					specialist: "#03A89E",
+					expert: "#0000FF",
+					candidate_master: "#AA00AA",
+					master: "#FF8C00",
+					international_master: "#FF8C00",
+					grandmaster: "#FF0000",
+					international_grandmaster: "#FF0000",
+					legendary_grandmaster: "#FF0000",
+				};
+
+				handle.style.color = colors[rank] || "#94a3b8";
+			} catch (err) {
+				console.error(err);
+			}
+		}
+
+		loadCodeforces();
+	</script>
+	<body class="antialiased selection:bg-indigo-500 selection:text-white">
+		<!-- Navigation -->
+		<nav class="fixed w-full z-50 glass-card backdrop-blur-md">
+			<div
+				class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center"
+			>
+				<div class="flex items-center gap-5">
+					<div class="flex items-center gap-6">
+						<!-- Name -->
+						<a
+							href="#"
+							class="text-xl font-extrabold tracking-tight hover:text-indigo-300 transition"
+						>
+							Saikat Kumar Sardar
+						</a>
+
+						<!-- Social Bar -->
+						<div class="hidden lg:flex items-center gap-4">
+							<!-- Email -->
+							<a
+								href="mailto:abhipj159@gmail.com"
+								title="Email"
+								class="social-pill text-slate-400 hover:text-sky-400"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="w-5 h-5"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+									></path>
+								</svg>
+							</a>
+
+							<!-- GitHub -->
+							<a
+								href="https://github.com/AbhinavPJ"
+								target="_blank"
+								title="GitHub"
+								class="social-pill text-white"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+									class="w-5 h-5"
+								>
+									<path
+										d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56 0-.28-.01-1.2-.02-2.17-3.2.7-3.88-1.54-3.88-1.54-.52-1.34-1.28-1.69-1.28-1.69-1.05-.71.08-.69.08-.69 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.19 1.18a11.03 11.03 0 015.81 0c2.22-1.49 3.19-1.18 3.19-1.18.63 1.58.23 2.75.11 3.04.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.03.78 2.09 0 1.51-.01 2.72-.01 3.09 0 .31.21.67.8.56A11.51 11.51 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"
+									></path>
+								</svg>
+							</a>
+
+							<!-- LinkedIn -->
+							<a
+								href="https://www.linkedin.com/in/abhinav-p-j-476a90246/"
+								target="_blank"
+								title="LinkedIn"
+								class="social-pill"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 448 512"
+									fill="#0A66C2"
+									class="w-5 h-5"
+								>
+									<path
+										d="M100.28 448H7.4V148.9h92.88zm-46.44-341C24.3 107 0 82.7 0 53.8A53.79 53.79 0 0153.84 0a53.79 53.79 0 0153.84 53.8c0 28.9-24.3 53.2-53.84 53.2zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.7-48.3 87.88-48.3 94 0 111.3 61.9 111.3 142.3V448z"
+									></path>
+								</svg>
+							</a>
+
+							<!-- Codeforces -->
+							<a
+								href="https://codeforces.com/profile/saikatsardar180"
+								target="_blank"
+								title="Codeforces"
+								class="social-pill flex items-center gap-2"
+							>
+								<img
+									src="https://codeforces.org/s/0/favicon-32x32.png"
+									alt="Codeforces"
+									class="w-5 h-5"
+								/>
+
+								<span
+									id="cf-handle"
+									class="font-semibold text-sm"
+								>
+									saikatsardar180
+								</span>
+							</a>
+
+							<!-- CodeChef -->
+							<a
+								href="https://www.codechef.com/users/saikat01"
+								target="_blank"
+								title="CodeChef"
+								class="social-pill flex items-center justify-center"
+							>
+								<div
+									class="w-6 h-6 rounded-full bg-white flex items-center justify-center"
+								>
+									<img
+										src="https://cdn.simpleicons.org/codechef"
+										alt="CodeChef"
+										class="w-4 h-4"
+									/>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="hidden md:flex space-x-6 text-sm font-medium">
+						<a href="#about" class="nav-link">About</a>
+						<a href="#experience" class="nav-link">Experience</a>
+						<a href="#projects" class="nav-link">Projects</a>
+						<a href="#achievements" class="nav-link">Achievements</a
+						>
+					</div>
+					<button
+						id="mobile-menu-button"
+						class="md:hidden p-2 rounded-lg text-slate-300 hover:bg-slate-800/40"
+					>
+						<svg
+							class="w-6 h-6"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							><path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M4 6h16M4 12h16M4 18h16"></path></svg
+						>
+					</button>
+				</div>
+				<div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+					<div class="flex flex-col space-y-2 text-sm">
+						<a href="#about" class="block p-2 nav-link">About</a>
+						<a href="#research" class="block p-2 nav-link"
+							>Research</a
+						>
+						<a href="#experience" class="block p-2 nav-link"
+							>Experience</a
+						>
+						<a href="#projects" class="block p-2 nav-link"
+							>Projects</a
+						>
+						<a href="#achievements" class="block p-2 nav-link"
+							>Achievements</a
+						>
+						<a href="#gallery" class="block p-2 nav-link">Gallery</a
+						>
+					</div>
+				</div>
+			</div>
+			<!-- About Section -->
+			<section id="about" class="py-20 bg-slate-900/50">
+				<div class="max-w-6xl mx-auto px-4">
+					<div class="glass-card rounded-2xl p-8 md:p-12">
+						<div
+							class="grid md:grid-cols-[1.3fr_0.9fr] gap-12 items-center"
+						>
+							<!-- Text Content -->
+							<div>
+								<h3
+									class="text-3xl font-bold mb-8 flex items-center"
+								>
+									<span class="text-indigo-500 mr-3">01.</span
+									>
+									About Me
+								</h3>
+
+								<div
+									class="space-y-5 text-slate-300 leading-relaxed text-[15px]"
+								>
+									<p>
+										I'm a second-year B.Tech student in
+										Computer Science & Engineering at IIT
+										Delhi , passionate about systems
+										engineering,numerical
+										optimization,machine learning and C++.
+									</p>
+
+									<p>
+										I am currently a Research Intern at
+										Uppsala University, Sweden, working with
+										Prof. Jens Sjölund on a
+										Learning-to-Optimize framework for
+										Sequential Quadratic Programming (SQP).
+										My work combines machine learning,
+										numerical optimization, and
+										hardware-aware execution for
+										next-generation optimization systems.
+									</p>
+
+									<p>
+										Apart from Research, Academics, and
+										Programming, I'm deeply interested in
+										low-latency architecture, C++ systems
+										engineering, and algorithmic
+										problem-solving.
+									</p>
+
+									<p>
+										At IIT Delhi, I serve as a Coordinator
+										at the Algorithms and Coding Club, where
+										I mentor students and help conduct
+										competitive programming initiatives.
+									</p>
+
+									<p>
+										I'm also the Convener of the CSE
+										Department's UG 3rd-Year Class, where I
+										coordinate with students and faculty
+										toward an enhanced academic experience.
+									</p>
+
+									<p>
+										Outside academics and engineering, I
+										enjoy playing badminton, poker, and
+										exploring beautiful places.
+									</p>
+								</div>
+							</div>
+
+							<!-- Image -->
+							<div class="flex flex-col items-center">
+								<div class="relative group">
+									<img
+										src="/images/Saikat_Profile.png"
+										alt="Saikat Profile Picture"
+										class="rounded-2xl rounded-portrait w-full max-w-sm object-cover shadow-2xl border border-white/10 group-hover:-translate-y-1 transition duration-300"
+									/>
+								</div>
+
+								<p
+									class="text-sm text-slate-400 mt-4 italic text-center"
+								>
+									At random restaurant
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			```
+
+			<!-- Experience -->
+			<section id="experience" class="py-20 max-w-6xl mx-auto px-4">
+				<h3 class="text-3xl font-bold mb-10 flex items-center">
+					<span class="text-indigo-500 mr-3">02.</span>
+					HFT Experience & Programs
+				</h3>
+
+				<div
+					class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-700 before:to-transparent"
+				>
+					<!-- HRT -->
+					<div
+						class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+					>
+						<div
+							class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-900 group-[.is-active]:bg-indigo-600 text-slate-500 group-[.is-active]:text-indigo-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
+						>
+							<svg
+								class="w-4 h-4"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+									clip-rule="evenodd"></path>
+							</svg>
+						</div>
+
+						<div
+							class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300"
+						>
+							<div class="flex items-center justify-between mb-2">
+								<h4 class="font-bold text-lg text-white">
+									Hudson River Trading (HRT)
+								</h4>
+								<span
+									class="text-sm text-indigo-400 font-medium"
+									>Singapore, Summer 2026</span
+								>
+							</div>
+
+							<p class="text-sm text-slate-300 font-medium mb-3">
+								C++ Track Attendee • CV Shortlist + Interview
+								Selection
+							</p>
+
+							<ul
+								class="text-sm text-slate-400 space-y-2 list-none"
+							>
+								<li>
+									• Selected among 13 students across India
+									for Explore HRT, a 3 day program at HRT's
+									Singapore Office.
+								</li>
+								<li>
+									• Worked on cross-exchange arbitrage systems
+									using modular C++ design.
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Optiver -->
+					<div
+						class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+					>
+						<div
+							class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-900 group-[.is-active]:bg-indigo-600 text-slate-500 group-[.is-active]:text-indigo-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
+						>
+							<svg
+								class="w-4 h-4"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+									clip-rule="evenodd"></path>
+							</svg>
+						</div>
+
+						<div
+							class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300"
+						>
+							<div class="flex items-center justify-between mb-2">
+								<h4 class="font-bold text-lg text-white">
+									Optiver
+								</h4>
+								<span
+									class="text-sm text-indigo-400 font-medium"
+									>Summer 2026</span
+								>
+							</div>
+
+							<p class="text-sm text-slate-300 font-medium mb-3">
+								Invited Participant • FutureFocus Program
+							</p>
+
+							<ul
+								class="text-sm text-slate-400 space-y-2 list-none"
+							>
+								<li>
+									• Invited to Optiver’s flagship technology
+									exploration program.
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- IMC -->
+					<div
+						class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+					>
+						<div
+							class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-900 group-[.is-active]:bg-indigo-600 text-slate-500 group-[.is-active]:text-indigo-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10"
+						>
+							<svg
+								class="w-4 h-4"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+							>
+								<path
+									fill-rule="evenodd"
+									d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+									clip-rule="evenodd"></path>
+							</svg>
+						</div>
+
+						<div
+							class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass-card p-6 rounded-xl hover:-translate-y-1 transition duration-300 border border-indigo-500/20"
+						>
+							<div class="flex items-center justify-between mb-2">
+								<h4 class="font-bold text-lg text-white">
+									IMC Trading
+								</h4>
+								<span
+									class="text-sm text-indigo-400 font-medium"
+									>Summer 2026</span
+								>
+							</div>
+
+							<p class="text-sm text-slate-300 font-medium mb-3">
+								Incoming Software Engineer Intern • Return Offer
+								after Launchpad
+							</p>
+
+							<ul
+								class="text-sm text-slate-400 space-y-2 list-none"
+							>
+								<li>
+									• Selected for IMC Launchpad’s Technology
+									Cohort after an online assessment and 3
+									interview rounds.
+								</li>
+								<li>
+									• Worked closely with IMC engineers on
+									performance-critical C++
+									optimization,attended talks,participated in
+									multiple interesting challenges.
+								</li>
+								<li>
+									• Received an offer to join IMC Trading as a
+									Software Engineer Intern for Summer 2027.
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Projects Section -->
+			<section id="projects" class="py-20 bg-slate-900/50">
+				<div class="max-w-6xl mx-auto px-4">
+					<h3 class="text-3xl font-bold mb-10 flex items-center">
+						<span class="text-indigo-500 mr-3">03.</span> Featured Projects
+					</h3>
+					<div class="grid md:grid-cols-2 gap-6">
+						<!-- RISC-V -->
+						<div
+							class="glass-card p-6 rounded-xl hover:-translate-y-2 transition duration-300"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<h4 class="text-xl font-bold text-white">
+									RISC-V Out-of-Order Processor
+								</h4>
+								<a
+									href="https://github.com/AbhinavPJ/Out-Of-Order-Processor"
+									target="_blank"
+									class="text-slate-400 hover:text-indigo-400"
+								>
+									<svg
+										class="w-6 h-6"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										><path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+										></path></svg
+									>
+								</a>
+							</div>
+							<p class="text-sm text-slate-400 mb-4">
+								Built a cycle-accurate 32-bit out-of-order
+								RISC-V processor simulator in C++ using
+								Tomasulo’s algorithm. Also developed a
+								randomized stress-testing checker to verify
+								correctness across processor implementations.
+								Awarded a perfect score (20/20).
+							</p>
+
+							<div
+								class="flex flex-wrap gap-2 text-xs font-mono text-indigo-300"
+							>
+								<span>C++</span>
+								<span>Computer Architecture</span>
+								<span>Out-of-Order Execution</span>
+							</div>
+						</div>
+
+						<!-- Task Board -->
+						<div
+							class="glass-card p-6 rounded-xl hover:-translate-y-2 transition duration-300"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<h4 class="text-xl font-bold text-white">
+									Task Board (Jira Clone)
+								</h4>
+								<a
+									href="https://github.com/AbhinavPJ/Taskboard-Website"
+									target="_blank"
+									class="text-slate-400 hover:text-indigo-400"
+								>
+									<svg
+										class="w-6 h-6"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										><path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+										></path></svg
+									>
+								</a>
+							</div>
+							<p class="text-sm text-slate-400 mb-4">
+								A project management application that enables
+								teams to plan, track, and manage work using
+								boards, issues, workflows. The implementation
+								successfully handles separating story and
+								task/bug workflow lanes while still keeping a
+								unified issue model. (Awarded 98/100)
+							</p>
+							<div
+								class="flex flex-wrap gap-2 text-xs font-mono text-indigo-300"
+							>
+								<span>TypeScript</span>
+								<span>Vite React</span>
+								<span>Full Stack</span>
+							</div>
+						</div>
+
+						<!-- SVG Editor -->
+						<div
+							class="glass-card p-6 rounded-xl hover:-translate-y-2 transition duration-300"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<h4 class="text-xl font-bold text-white">
+									Vector Graphics Editor
+								</h4>
+								<a
+									href="https://github.com/AbhinavPJ/COP290-PROJECT1"
+									target="_blank"
+									class="text-slate-400 hover:text-indigo-400"
+								>
+									<svg
+										class="w-6 h-6"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										><path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+										></path></svg
+									>
+								</a>
+							</div>
+							<p class="text-sm text-slate-400 mb-4">
+								A vector graphics editor built in C++ using the
+								Qt framework. It features a custom XML parser to
+								handle SVG files without relying on external
+								libraries. (Awarded 100/100)
+							</p>
+							<div
+								class="flex flex-wrap gap-2 text-xs font-mono text-indigo-300"
+							>
+								<span>C++</span>
+								<span>Qt6</span>
+								<span>XML Parsing</span>
+							</div>
+						</div>
+
+						<!-- TDSE Crank-Nicholson -->
+						<div
+							class="glass-card p-6 rounded-xl hover:-translate-y-2 transition duration-300"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<h4 class="text-xl font-bold text-white">
+									TDSE Numerical Solver
+								</h4>
+								<a
+									href="https://github.com/AbhinavPJ/Crank-Nicholson-Method-for-solving-TDSE"
+									target="_blank"
+									class="text-slate-400 hover:text-indigo-400"
+								>
+									<svg
+										class="w-6 h-6"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										><path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+										></path></svg
+									>
+								</a>
+							</div>
+							<p class="text-sm text-slate-400 mb-4">
+								Solves the 1D Time-Dependent Schrödinger
+								Equation (TDSE) using the Crank-Nicolson method.
+								It utilizes the Thomas algorithm, reducing the
+								computational cost to O(N) time per step.
+							</p>
+							<div
+								class="flex flex-wrap gap-2 text-xs font-mono text-indigo-300"
+							>
+								<span>Python</span>
+								<span>Numerical Methods</span>
+								<span>Linear Algebra</span>
+							</div>
+						</div>
+
+						<!-- Pointer vs CSR BFS -->
+						<div
+							class="glass-card p-6 rounded-xl hover:-translate-y-2 transition duration-300"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<h4 class="text-xl font-bold text-white">
+									Cache-Friendly Graph Processing
+								</h4>
+								<a
+									href="https://github.com/AbhinavPJ/COL216-A3"
+									target="_blank"
+									class="text-slate-400 hover:text-indigo-400"
+								>
+									<svg
+										class="w-6 h-6"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										><path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+										></path></svg
+									>
+								</a>
+							</div>
+							<p class="text-sm text-slate-400 mb-4">
+								Benchmarked pointer-based vs CSR-based BFS
+								implementations on large-scale random graphs
+								using Cachegrind. Analyzed cache behavior,
+								memory locality, associativity, and cache-line
+								effects.
+							</p>
+							<div
+								class="flex flex-wrap gap-2 text-xs font-mono text-indigo-300"
+							>
+								<span>C++</span>
+								<span>Systems Architecture</span>
+								<span>Benchmarking</span>
+							</div>
+						</div>
+
+						<!-- PARANOIA -->
+						<div
+							class="glass-card p-6 rounded-xl hover:-translate-y-2 transition duration-300"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<h4 class="text-xl font-bold text-white">
+									PARANOIA
+								</h4>
+								<a
+									href="https://github.com/AbhinavPJ/PARANOIA"
+									target="_blank"
+									class="text-slate-400 hover:text-indigo-400"
+								>
+									<svg
+										class="w-6 h-6"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										><path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+										></path></svg
+									>
+								</a>
+							</div>
+							<p class="text-sm text-slate-400 mb-4">
+								A tool that detects code similarity by
+								converting code into Abstract Syntax Trees
+								(ASTs), enabling effective plagiarism detection
+								across different users without exposing the
+								actual source code, thus preserving privacy.
+							</p>
+							<div
+								class="flex flex-wrap gap-2 text-xs font-mono text-indigo-300"
+							>
+								<span>ASTs</span>
+								<span>Code Analysis</span>
+							</div>
+						</div>
+						<!-- ADVENT OF CODE 2025 -->
+						<div
+							class="glass-card p-6 rounded-xl hover:-translate-y-2 transition duration-300"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<h4 class="text-xl font-bold text-white">
+									ADVENT OF CODE 2025
+								</h4>
+								<a
+									href="https://github.com/AbhinavPJ/advent-of-code"
+									target="_blank"
+									class="text-slate-400 hover:text-indigo-400"
+								>
+									<svg
+										class="w-6 h-6"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										><path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+										></path></svg
+									>
+								</a>
+							</div>
+							<p class="text-sm text-slate-400 mb-4">
+								My solutions to the Advent of Code 2025
+								programming puzzles.
+							</p>
+							<div
+								class="flex flex-wrap gap-2 text-xs font-mono text-indigo-300"
+							>
+								<span>Algorithmic Problem Solving</span>
+							</div>
+						</div>
+						<!-- Minimal Whatsapp chat Analyzer -->
+						<div
+							class="glass-card p-6 rounded-xl hover:-translate-y-2 transition duration-300"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<h4 class="text-xl font-bold text-white">
+									Minimal Whatsapp chat Analyzer
+								</h4>
+								<a
+									href="https://github.com/AbhinavPJ/Whatsapp-GC-analyzer"
+									target="_blank"
+									class="text-slate-400 hover:text-indigo-400"
+								>
+									<svg
+										class="w-6 h-6"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										><path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+										></path></svg
+									>
+								</a>
+							</div>
+							<p class="text-sm text-slate-400 mb-4">
+								Analyzes WhatsApp group chat exports to provide
+								insights like message counts,activity timelines
+								and word clouds. Built with Python.
+							</p>
+							<div
+								class="flex flex-wrap gap-2 text-xs font-mono text-indigo-300"
+							>
+								<span
+									>Data Processing, Exploratory Data Analysis</span
+								>
+							</div>
+						</div>
+						<!-- Neural Network for Sign Language Translation -->
+						<div
+							class="glass-card p-6 rounded-xl hover:-translate-y-2 transition duration-300"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<h4 class="text-xl font-bold text-white">
+									Neural Network for Sign Language Translation
+								</h4>
+								<a
+									href="https://github.com/AbhinavPJ/Signlanguage_neural_network"
+									target="_blank"
+									class="text-slate-400 hover:text-indigo-400"
+								>
+									<svg
+										class="w-6 h-6"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										><path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+										></path></svg
+									>
+								</a>
+							</div>
+							<p class="text-sm text-slate-400 mb-4">
+								Processes Realtime video input, processes data
+								into sequences of hand keypoints, translates
+								them into meaningful relative polar coordinates,
+								and feeds them into a well-trained neural
+								network to predict the corresponding sign
+								language gestures. Built with PyTorch and
+								OpenCV.
+							</p>
+							<div
+								class="flex flex-wrap gap-2 text-xs font-mono text-indigo-300"
+							>
+								<span
+									>Data Processing, Exploratory Data Analysis</span
+								>
+							</div>
+						</div>
+						<!-- C++ Backtesting Engine -->
+						<div
+							class="glass-card p-6 rounded-xl hover:-translate-y-2 transition duration-300"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<h4 class="text-xl font-bold text-white">
+									C++ Backtesting Engine
+								</h4>
+								<a
+									href="https://github.com/AbhinavPJ/BACKTESTING-ENGINE"
+									target="_blank"
+									class="text-slate-400 hover:text-indigo-400"
+								>
+									<svg
+										class="w-6 h-6"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+										><path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+										></path></svg
+									>
+								</a>
+							</div>
+							<p class="text-sm text-slate-400 mb-4">
+								Built a lightweight C++ backtesting engine for
+								simulating systematic trading strategies on
+								historical stock market data. Implemented
+								modular components for market simulation,
+								portfolio management, transaction cost handling,
+								and time-driven strategy execution, with support
+								for multi-asset backtesting and portfolio
+								valuation tracking across market phases.
+							</p>
+							<div
+								class="flex flex-wrap gap-2 text-xs font-mono text-indigo-300"
+							>
+								<span
+									>C++, Quantitative Finance, Backtesting,
+									Data Analysis</span
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Achievements & Competitive Programming -->
+			<section id="achievements" class="py-20 max-w-6xl mx-auto px-4">
+				<h3 class="text-3xl font-bold mb-10 flex items-center">
+					<span class="text-indigo-500 mr-3">04.</span> Achievements & Lectures
+				</h3>
+
+				<div class="grid md:grid-cols-3 gap-8">
+					<!-- Scholastic Achievements -->
+					<div class="md:col-span-2 glass-card p-8 rounded-xl">
+						<h4
+							class="text-xl font-bold mb-6 border-b border-slate-700 pb-2"
+						>
+							Academic & Global Rankings
+						</h4>
+						<ul class="space-y-4 text-slate-300 text-sm">
+							<li class="flex items-start">
+								<span class="text-indigo-500 mr-2">✓</span>
+								<span
+									><strong>JEE Advanced 2024:</strong> Ranked 80th
+									with a score of 304/360, including a perfect score
+									in Mathematics.</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-indigo-500 mr-2">✓</span>
+								<span
+									><strong>JEE Main 2024:</strong> 99.9966 percentile,
+									scoring 290/300. Perfect Math scores in both sessions,
+									and perfect Physics & Chemistry once each.</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-indigo-500 mr-2">✓</span>
+								<span
+									><strong>Competitive Programming:</strong> Codeforces
+									(1851), Codechef (2015). Ranked 186th globally
+									at Meta Hacker Cup among 13,000+ participants.</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-indigo-500 mr-2">✓</span>
+								<span
+									><strong>Olympiads:</strong> Astronomy Olympiad
+									(Qualified INAO twice, OCSC to represent India),
+									NSEP & NSEA (National top 1% twice), NSEC & PRMO.</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-indigo-500 mr-2">✓</span>
+								<span
+									><strong>KCET 2024:</strong> Ranked 3rd among
+									0.4 million candidates.</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-indigo-500 mr-2">✓</span>
+								<span
+									><strong>Contests:</strong> Represented IITD at
+									Mimamsa (4th out of 1800+), a national level STEM-based
+									contest for undergraduates held at IISER Pune.
+								</span>
+							</li>
+							<li class="flex items-start">
+								<span class="text-indigo-500 mr-2">✓</span>
+								<span
+									><strong
+										>Intercollegiate Informatic and
+										Competitive Programming Camp:
+									</strong>IICPC Quantfest 2025 (Ranked
+									135th/10,000+). IICPC Codefest 2026 (Ranked
+									64th/13,800).</span>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Teaching -->
+					<div class="glass-card p-8 rounded-xl">
+						<h4
+							class="text-xl font-bold mb-6 border-b border-slate-700 pb-2"
+						>
+							Algorithms & Coding Club
+						</h4>
+						<p class="text-sm text-slate-300 mb-4">
+							I also take lectures,from time to time, to help
+							peers excel in competitive programming.
+						</p>
+						<div class="space-y-4">
+							<a
+								href="https://www.youtube.com/watch?v=rAnkTs2GaZk"
+								target="_blank"
+								class="block p-3 bg-slate-800 rounded-lg hover:bg-slate-700 transition"
+							>
+								<p
+									class="text-sm font-semibold text-indigo-300"
+								>
+									Time Complexity, Binary Search,C++ STL
+								</p>
+								<p class="text-xs text-slate-400 mt-1">
+									YouTube Lecture
+								</p>
+							</a>
+							<a
+								href="https://youtu.be/K82KZz_3H7A?si=ywnsBpWLm6tTaAN3"
+								target="_blank"
+								class="block p-3 bg-slate-800 rounded-lg hover:bg-slate-700 transition"
+							>
+								<p
+									class="text-sm font-semibold text-indigo-300"
+								>
+									Prefix Sums, Two Pointers,More Binary
+									Search, Interval Scheduling, Ternary Search
+								</p>
+								<p class="text-xs text-slate-400 mt-1">
+									YouTube Lecture
+								</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- Footer -->
+			<footer class="py-10 text-center text-slate-500 text-sm">
+				<p>Designed & Built by Abhinav P J.</p>
+				<div class="flex justify-center space-x-4 mt-4">
+					<a
+						href="https://github.com/AbhinavPJ"
+						class="hover:text-indigo-400 transition">GitHub</a
+					>
+					<a
+						href="https://www.linkedin.com/in/abhinav-p-j-476a90246/"
+						class="hover:text-indigo-400 transition">LinkedIn</a
+					>
+				</div>
+			</footer>
+
+			<script>
+				(function () {
+					const btn = document.getElementById("mobile-menu-button");
+					const menu = document.getElementById("mobile-menu");
+					if (!btn || !menu) return;
+					btn.addEventListener("click", () => {
+						menu.classList.toggle("hidden");
+					});
+				})();
+			</script>
+		</nav>
+	</body>
+</html>
